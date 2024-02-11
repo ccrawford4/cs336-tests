@@ -1,5 +1,0 @@
-[[tests]]
-name = "hello"
-input = ["./$project"]
-expected = "Hello, CS 315!"
-rubric = 100

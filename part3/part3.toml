@@ -1,0 +1,88 @@
+[project]
+timeout = 30
+
+[[tests]]
+name = "set-non"
+input = ["./part3", "set", "0"]
+expected = """
+admin doesn't have write permission.
+admin doesn't have read permission.
+admin doesn't have execute permission.
+"""
+rubric = 10
+
+[[tests]]
+name = "set-read-and-write"
+input = ["./part3", "set", "3"]
+expected = """
+admin has write permission.
+admin has read permission.
+admin doesn't have execute permission.
+"""
+rubric = 10
+
+[[tests]]
+name = "set-all"
+input = ["./part3", "set", "7"]
+expected = """
+admin has write permission.
+admin has read permission.
+admin has execute permission.
+"""
+rubric = 10
+
+[[tests]]
+name = "grant-read"
+input = ["./part3", "grant", "1"]
+expected = """
+admin doesn't have write permission.
+admin has read permission.
+admin doesn't have execute permission.
+"""
+rubric = 10
+
+[[tests]]
+name = "grant-write-and-execute"
+input = ["./part3", "grant", "0", "&&", "./part3", "grant", "2"]
+expected = """
+admin has write permission.
+admin doesn't have read permission.
+admin has execute permission.
+"""
+rubric = 10
+
+[[tests]]
+name = "revoke-execute"
+input = ["./part3", "set", "7", "&&", "./part3", "revoke", "2"]
+expected = """
+admin has write permission.
+admin has read permission.
+admin doesn't have execute permission.
+"""
+rubric = 10
+
+[[tests]]
+name = "revoke-write-and-read"
+input = ["./part3", "set", "7", "&&", "./part3", "revoke", "0", "&&", "./part3", "revoke", "1"]
+expected = """
+admin doesn't have write permission.
+admin doesn't have read permission.
+"""
+rubric = 10
+
+[[tests]]
+name = "set-zero"
+input = ["./part3", "set", "0"]
+expected = """
+admin doesn't have write permission.
+admin doesn't have read permission.
+"""
+rubric = 10
+
+[[tests]]
+name = "invalid-set"
+input = ["./part3", "set", "8"]
+expected = """
+ERROR! Invalid input. Value must be 0-7.
+"""
+rubric = 10

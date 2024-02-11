@@ -1,0 +1,5 @@
+[project]
+timeout = 30
+
+[[tests]]
+name=
